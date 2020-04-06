@@ -58,5 +58,6 @@ Getting ahead of myself here, this is a placeholder, but this is how it will wor
         'unit' => 'yard'
     ],
     'returnUnit' => 'yard'
+    'precision' => 2 //This parameter is optional
  ]
 ```

@@ -4,7 +4,7 @@ namespace App\Tests\Domain\Distance\Model;
 
 use App\Domain\Distance\Factory\UnitFactory;
 use PHPUnit\Framework\TestCase;
-use ApiException;
+use App\Domain\Distance\Exception\ApiException;
 
 class UnitTest extends TestCase
 {

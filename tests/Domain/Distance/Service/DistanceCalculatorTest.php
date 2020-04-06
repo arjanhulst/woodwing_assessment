@@ -4,7 +4,7 @@ namespace App\Tests\Domain\Distance\Service;
 
 use App\Domain\Distance\Factory\UnitFactory;
 use App\Domain\Distance\Service\DistanceCalculator;
-use ApiException;
+use App\Domain\Distance\Exception\ApiException;
 use PHPUnit\Framework\TestCase;
 
 class DistanceCalculatorTest extends TestCase

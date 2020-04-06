@@ -4,7 +4,7 @@ namespace App\Domain\Distance\EventListener;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use ApiException;
+use App\Domain\Distance\Exception\ApiException;
 
 class ExceptionListener
 {

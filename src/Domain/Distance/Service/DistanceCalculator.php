@@ -31,9 +31,11 @@ class DistanceCalculator
      *
      * @param array $distances
      * @param string $returnUnitType
+     * @param int $precision
+     *
      * @return mixed
      */
-    public function addUp(array $distances, string $returnUnitType)
+    public function addUp(array $distances, string $returnUnitType, int $precision = null)
     {
         //create a new Unit which we will use to store and add the distances from the distances supplied
         /** @var Base $returnUnit */
@@ -43,6 +45,10 @@ class DistanceCalculator
             $unit = $this->unitFactory->createUnit($distance['unit']);
             $unit->setDistance(floatval($distance['distance']));
             $returnUnit->addMeters($unit->getMeters());
+        }
+        if($precision)
+        {
+            $returnUnit->setDistance(round($returnUnit->getDistance(),$precision));
         }
         return $returnUnit;
     }

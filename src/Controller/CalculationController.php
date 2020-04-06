@@ -9,7 +9,7 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use ApiException;
+use App\Domain\Distance\Exception\ApiException;
 
 /**
  * Class CalculationController
@@ -41,6 +41,13 @@ class CalculationController
      *     type="integer",
      *     description="The unit to convert the distance to"
      * )
+     * @SWG\Parameter(
+     *     name="precision",
+     *     in="query",
+     *     type="integer",
+     *     required="false",
+     *     description="Number of digits to round to"
+     * )
      * @SWG\Tag(name="calculate-distance")
      *
      * @param Request $request
@@ -48,12 +55,16 @@ class CalculationController
      * @param SerializerInterface $serializer
      *
      * @return JsonResponse
+     *
+     * @throws ApiException
      */
     public function calculateDistanceAction(Request $request, DistanceCalculator $calculator, SerializerInterface $serializer)
     {
         $distances = $request->get('distances', []);
         $returnUnit = $request->get('returnUnit', false);
-        $distance = $calculator->addUp($distances, $returnUnit);
+        $precision = $request->get('precision', null);
+
+        $distance = $calculator->addUp($distances, $returnUnit, is_int($precision) ?: null);
         if (count($distances) < 2 || !$returnUnit) {
             throw new ApiException('Missing required parameters', 400);
         }

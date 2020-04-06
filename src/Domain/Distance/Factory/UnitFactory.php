@@ -2,7 +2,7 @@
 
 namespace App\Domain\Distance\Factory;
 
-use ApiException;
+use App\Domain\Distance\Exception\ApiException;
 
 class UnitFactory implements FactoryInterface
 {
