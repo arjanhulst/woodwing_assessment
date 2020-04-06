@@ -18,6 +18,6 @@ class Meter extends Base
     public function __construct()
     {
         parent::setMeterRatio(self::$meterRatio);
-        $this->setUnit('Meters');
+        $this->setUnit('Meter');
     }
 }
