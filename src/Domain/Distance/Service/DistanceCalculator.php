@@ -21,9 +21,7 @@ class DistanceCalculator
      * DistanceCalculation constructor.
      * @param UnitFactory $unitFactory
      */
-    public function __construct(
-        UnitFactory $unitFactory
-    )
+    public function __construct(UnitFactory $unitFactory)
     {
         $this->unitFactory = $unitFactory;
     }
@@ -40,11 +38,10 @@ class DistanceCalculator
         //create a new Unit which we will use to store and add the distances from the distances supplied
         /** @var Base $returnUnit */
         $returnUnit = $this->unitFactory->createUnit($returnUnitType);
-        foreach($distances as $key => $distance)
-        {
+        foreach ($distances as $key => $distance) {
             /** @var Base $unit */
             $unit = $this->unitFactory->createUnit($distance['unit']);
-            $unit->setDistance($distance['distance']);
+            $unit->setDistance(floatval($distance['distance']));
             $returnUnit->addMeters($unit->getMeters());
         }
         return $returnUnit;

@@ -2,7 +2,7 @@
 
 namespace App\Domain\Distance\Factory;
 
-use InvalidArgumentException;
+use ApiException;
 
 class UnitFactory implements FactoryInterface
 {
@@ -14,7 +14,7 @@ class UnitFactory implements FactoryInterface
         if (class_exists($className)) {
             return new $className();
         } else {
-            throw new InvalidArgumentException("We don't support the unit ($unitType) you have requested (yet)");
+            throw new ApiException("We do not support the unit ($unitType) you have requested (yet)");
             //TODO: Create an actual exception for this
         }
     }

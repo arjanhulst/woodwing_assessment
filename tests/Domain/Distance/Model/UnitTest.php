@@ -4,7 +4,7 @@ namespace App\Tests\Domain\Distance\Model;
 
 use App\Domain\Distance\Factory\UnitFactory;
 use PHPUnit\Framework\TestCase;
-use InvalidArgumentException;
+use ApiException;
 
 class UnitTest extends TestCase
 {
@@ -47,7 +47,7 @@ class UnitTest extends TestCase
 
     public function testNonExistentUnit()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ApiException::class);
         $this->unitFactory->createUnit('mile');
     }
 }

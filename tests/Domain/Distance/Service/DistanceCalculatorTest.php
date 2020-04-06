@@ -4,7 +4,7 @@ namespace App\Tests\Domain\Distance\Service;
 
 use App\Domain\Distance\Factory\UnitFactory;
 use App\Domain\Distance\Service\DistanceCalculator;
-use InvalidArgumentException;
+use ApiException;
 use PHPUnit\Framework\TestCase;
 
 class DistanceCalculatorTest extends TestCase
@@ -49,7 +49,7 @@ class DistanceCalculatorTest extends TestCase
         $unitFactory = new UnitFactory();
         $distanceCalculator = new DistanceCalculator($unitFactory);
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(ApiException::class);
         $distanceCalculator->addUp($params, 'mile');
     }
 }

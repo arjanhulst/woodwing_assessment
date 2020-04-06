@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use App\Domain\Distance\Service\DistanceCalculator;
 use JMS\Serializer\SerializerInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use InvalidArgumentException;
+use ApiException;
 
 /**
  * Class CalculationController
@@ -43,17 +44,19 @@ class CalculationController
      * @SWG\Tag(name="calculate-distance")
      *
      * @param Request $request
+     * @param DistanceCalculator $calculator
      * @param SerializerInterface $serializer
      *
      * @return JsonResponse
      */
-    public function calculateDistanceAction(Request $request, SerializerInterface $serializer)
+    public function calculateDistanceAction(Request $request, DistanceCalculator $calculator, SerializerInterface $serializer)
     {
-            $distances = $request->get('distances',[]);
-            $returnUnit = $request->get('returnUnit', false);
-            if (count($distances) < 2 || !$returnUnit) {
-                return new JsonResponse(['message' => 'Missing required parameters'], 400);
-            }
-        return new JsonResponse($serializer->serialize($distances, 'json'), 200, [], true);
+        $distances = $request->get('distances', []);
+        $returnUnit = $request->get('returnUnit', false);
+        $distance = $calculator->addUp($distances, $returnUnit);
+        if (count($distances) < 2 || !$returnUnit) {
+            throw new ApiException('Missing required parameters', 400);
+        }
+        return new JsonResponse($serializer->serialize($distance, 'json'), 200, [], true);
     }
 }
