@@ -33,7 +33,10 @@ class CalculationController
      *     name="distances",
      *     in="query",
      *     type="array",
-     *     description="An array of distances"
+     *     description="An array of distances",
+     *     @SWG\Items(
+     *         type="string",
+     *     )
      * )
      * @SWG\Parameter(
      *     name="return_unit",
@@ -45,7 +48,7 @@ class CalculationController
      *     name="precision",
      *     in="query",
      *     type="integer",
-     *     required="false",
+     *     required=false,
      *     description="Number of digits to round to"
      * )
      * @SWG\Tag(name="calculate-distance")
