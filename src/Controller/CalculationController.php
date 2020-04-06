@@ -62,9 +62,9 @@ class CalculationController
     {
         $distances = $request->get('distances', []);
         $returnUnit = $request->get('returnUnit', false);
-        $precision = $request->get('precision', null);
+        $precision = intval($request->get('precision', null));
 
-        $distance = $calculator->addUp($distances, $returnUnit, is_int($precision) ?: null);
+        $distance = $calculator->addUp($distances, $returnUnit, $precision > 0 ?: null);
         if (count($distances) < 2 || !$returnUnit) {
             throw new ApiException('Missing required parameters', 400);
         }
