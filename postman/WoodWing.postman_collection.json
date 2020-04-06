@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "9349224d-da2c-4ac3-ba32-89f5ffaf7a82",
+		"name": "WoodWing",
+		"description": "WoodWing Distance Calulator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WoodWing Api Get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/add-up-distance?distances[0][distance]=42&distances[0][unit]=meter&distances[1][unit]=yard&distances[1][distance]=4&returnUnit=meter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-up-distance"
+					],
+					"query": [
+						{
+							"key": "distances[0][distance]",
+							"value": "42"
+						},
+						{
+							"key": "distances[0][unit]",
+							"value": "meter"
+						},
+						{
+							"key": "distances[1][unit]",
+							"value": "yard"
+						},
+						{
+							"key": "distances[1][distance]",
+							"value": "4"
+						},
+						{
+							"key": "returnUnit",
+							"value": "meter"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WoodWing Api Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "distances[0][distance]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "distances[0][unit]",
+							"value": "meter",
+							"type": "text"
+						},
+						{
+							"key": "distances[1][unit]",
+							"value": "yard",
+							"type": "text"
+						},
+						{
+							"key": "distances[1][distance]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "returnUnit",
+							"value": "yard",
+							"type": "text"
+						},
+						{
+							"key": "precision",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/add-up-distance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-up-distance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

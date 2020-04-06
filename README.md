@@ -44,6 +44,17 @@ Nice to haves:
 * Extended error reporting / handling
 * More robust input verification (types, etc)
 
+## Starting the server (through Symfony CLI)
+* checkout the project from git
+* `composer install`
+* `symfony server:start`
+* go to http://localhost:8000/api/doc for a description of the api
+
+For Unit & Functional Tests
+`./bin/phpunit`
+
+If you use Postman for making api calls, there is a present in the postman folder :relaxed:
+
 ## Endpoint
 Getting ahead of myself here, this is a placeholder, but this is how it will work in the end. More or less..
 ##### /api/add-up-distance (either POST or GET)
